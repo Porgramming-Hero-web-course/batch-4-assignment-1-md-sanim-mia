@@ -12,27 +12,14 @@ email:string;
 const myProfile:Profile = { name: "Alice", age: 25, email: "alice@example.com" };
 
 
-const updateProfile=(params:Profile,update)=>{
+const updateProfile=(params:Profile,update:Partial<Profile>)=>{
 
 
-if(update.age){
- params.age=update.age
-
- return params
-}else if(update.name){
-    params.name=update.name
-
-    return params
-}else if(update.email){
-
-    params.email=update.email
-
-    return params
-}
+return {...params,...update}
 }
 
 
-console.log(updateProfile(myProfile,{name:'sdfjsafj'}))
+updateProfile(myProfile, { age: 26 })
 
 
 
